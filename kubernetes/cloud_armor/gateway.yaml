@@ -1,0 +1,23 @@
+kind: Gateway
+apiVersion: gateway.networking.k8s.io/v1beta1
+metadata:
+  name: external-http
+  namespace: gateway-infra
+spec:
+  gatewayClassName: gke-l7-global-external-managed
+  listeners:
+    - name: https
+      protocol: HTTPS
+      port: 443
+      allowedRoutes:
+        kinds:
+          - kind: HTTPRoute
+        namespaces:
+          from: All
+      tls:
+        mode: Terminate
+        options:
+          networking.gke.io/pre-shared-certs: gke-gtw-test-cert
+  addresses:
+    - type: NamedAddress
+      value: gke-gtw-test-lb
