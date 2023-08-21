@@ -1,0 +1,15 @@
+apiVersion: networking.gke.io/v1
+kind: GCPBackendPolicy
+metadata:
+  name: iap-store-v1
+spec:
+  default:
+    iap:
+      enabled: true
+      oauth2ClientSecret:
+        name: iap-store-v1
+      clientID: ##CLIENT_ID##
+  targetRef:
+    group: ""
+    kind: Service
+    name: store-v1

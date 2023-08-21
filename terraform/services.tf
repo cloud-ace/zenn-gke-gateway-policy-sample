@@ -6,6 +6,7 @@ locals {
     "endpoints.googleapis.com",
     "iam.googleapis.com",
     "iamcredentials.googleapis.com",
+    "iap.googleapis.com",
     "serviceusage.googleapis.com",
   ]
 }
